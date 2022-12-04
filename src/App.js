@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import NfcManager from "react-native-nfc-manager";
 import Game from "./Game";
 import AndroidPrompt from "./AndroidPrompt";
+import ScanComp from "./ScanComp";
 
 function App(props) {
     const [hasNfc, setHasNfc] = React.useState(null)
@@ -48,7 +49,8 @@ function App(props) {
     }
 
     return (
-        <Game />
+        <ScanComp />
+        // <Game />
     )
 }
 
