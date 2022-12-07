@@ -1,16 +1,15 @@
 import React from "react";
 import { View, Text, Modal, StyleSheet, Dimensions, TouchableOpacity } from "react-native";
+import NfcManager from "react-native-nfc-manager";
 
+// Docelowo ten komponent tylko na Androidzie bo ios ma wbudowane UI do skanowania NFC
 function AndroidPrompt(props, ref) {
-    const {onCancelPress} = props
     const [visible, setVisible] = React.useState(false)
-    const [hintText, setHintText] = React.useState('')
 
     React.useEffect(() => {
         if(ref) {
             ref.current = {
                 setVisible,
-                setHintText
             }
         }
     }, [ref])
@@ -21,12 +20,11 @@ function AndroidPrompt(props, ref) {
                 <View style={[styles.backdrop, StyleSheet.absoluteFill]} />
 
                 <View style={styles.prompt}>
-                    <Text style={styles.hint}>{hintText || "Hello NFC"}</Text>
+                    <Text style={styles.hint}>Scanning...</Text>
 
                     <TouchableOpacity style={styles.btn} onPress={() => {
                         setVisible(false),
-                        setHintText('')
-                        onCancelPress()
+                        NfcManager.unregisterTagEvent().catch(() => 0)
                     }}>
                         <Text style={styles.btnCancel}>CANCEL</Text>
                     </TouchableOpacity>
@@ -38,7 +36,7 @@ function AndroidPrompt(props, ref) {
 
 const styles = StyleSheet.create({
     content: {
-        flex: 1
+        flex: 1,
     },
     backdrop: {
         backgroundColor: 'rgba(0,0,0,0.3)'
@@ -46,11 +44,10 @@ const styles = StyleSheet.create({
     prompt: {
         position: 'absolute',
         bottom: 0,
-        left: 20,
-        width: Dimensions.get('window').width - 2 * 20,
+        width: Dimensions.get('window').width,
         backgroundColor: 'white',
         borderRadius: 9,
-        paddingVertical: 60,
+        paddingVertical: 55,
         paddingHorizontal: 20,
         alignItems: 'center',
         justifyContent: 'center'

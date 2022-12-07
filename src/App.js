@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import NfcManager from "react-native-nfc-manager";
-import Game from "./Game";
 import AndroidPrompt from "./AndroidPrompt";
-import ScanComp from "./ScanComp";
+import NfcExample from "./NfcExample";
+import SoundExample from "./SoundExample";
 
 function App(props) {
-    const [hasNfc, setHasNfc] = React.useState(null)
-    const [enabled, setEnabled] = React.useState(null)
+    const [hasNfc, setHasNfc] = useState(null)
+    const [enabled, setEnabled] = useState(null)
 
-    React.useEffect(() => {
+    useEffect(() => { // wstępny setup, sprawdza czy telefon ma NFC (hasNfc) i czy NFC jest włączone w ustawieniach (enabled)
         async function checkNfc() {
             const supported = await NfcManager.isSupported()
             if(supported) {
@@ -49,8 +49,10 @@ function App(props) {
     }
 
     return (
-        <ScanComp />
-        // <Game />
+        <View style={styles.wrapper}>
+            <SoundExample />
+            <NfcExample />
+        </View>
     )
 }
 
@@ -58,7 +60,7 @@ const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     }
 })
 
