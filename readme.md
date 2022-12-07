@@ -14,6 +14,7 @@ Wszystko jest zrobione pod Androida więc na ios może nie działać, lepiej te�
 2. W folderze projektu:
     - Wpisać `npm install` żeby zainstalować zależności
     - W folderze ./android dodać plik "local.properties" którego zawartość jest mniej więcej taka:
+    """
         ## This file must *NOT* be checked into Version Control Systems,
         # as it contains information specific to your local configuration.
         #
@@ -22,6 +23,7 @@ Wszystko jest zrobione pod Androida więc na ios może nie działać, lepiej te�
         # header note.
         #Sat Dec 03 21:40:35 CET 2022
         sdk.dir=<path u was na kompie do folderu Sdk>
+    """
 
     u mnie jest: sdk.dir=C\:\\Users\\Olek\\AppData\\Local\\Android\\Sdk (trzeba takim zjebanym formatem)
 
