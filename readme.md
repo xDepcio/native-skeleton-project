@@ -13,19 +13,7 @@ Wszystko jest zrobione pod Androida więc na ios może nie działać, lepiej te�
 
 2. W folderze projektu:
     - Wpisać `npm install` żeby zainstalować zależności
-    - W folderze ./android dodać plik "local.properties" którego zawartość jest mniej więcej taka:
-    """
-        ## This file must *NOT* be checked into Version Control Systems,
-        # as it contains information specific to your local configuration.
-        #
-        # Location of the SDK. This is only used by Gradle.
-        # For customization when using a Version Control System, please read the
-        # header note.
-        #Sat Dec 03 21:40:35 CET 2022
-        sdk.dir=<path u was na kompie do folderu Sdk>
-    """
-
-    u mnie jest: sdk.dir=C\:\\Users\\Olek\\AppData\\Local\\Android\\Sdk (trzeba takim zjebanym formatem)
+    - W folderze ./android dodać plik "local.properties" którego zawartość jest mniej więcej taka jak w pliku `przyklad_properties.txt`. Trzeba zmienić wartość sdk.dir na PATH do folderu Sdk
 
 
 3. Odpalenie aplikacji:
